@@ -1,6 +1,6 @@
 {
   "name": "@kenetto/react-native-pincode",
-  "version": "1.21.4",
+  "version": "1.21.5",
   "description": "React native PIN code component",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
