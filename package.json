@@ -1,6 +1,6 @@
 {
   "name": "@kenetto/react-native-pincode",
-  "version": "1.22.5",
+  "version": "1.22.6",
   "description": "React native PIN code component",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -24,6 +24,7 @@
   "bugs": {
     "url": "https://github.com/Haskkor/react-native-pincode/issues"
   },
+  "files": ["dist"],
   "homepage": "https://github.com/Haskkor/react-native-pincode#readme",
   "devDependencies": {
     "@types/d3-ease": "^1.0.7",
