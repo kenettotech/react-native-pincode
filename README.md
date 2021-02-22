@@ -98,13 +98,14 @@ await resetPinCodeInternalStates()
 
 | Key | Description | Default | Required | Type |
 |---|---|---|---|---|
+|**`alphabetCharsVisible`**|Boolean to hide/show English alphabet on PIN panel|`false`|`false`|`boolean`|
 |**`bottomLeftComponent`**|Component to replace the empty space at the bottom left of the numpad|Empty space|`false`|`any`|
 |**`buttonComponentLockedPage`**|Button component to be used at the bottom of the page on the locked application page|TouchableOpacity exit button killing the application|`false`|`any`|
 |**`buttonDeleteComponent`**|Button component to be used at the bottom right of the PIN panel to delete a previous entry|TouchableHighlight button with a `delete` text and the `backspace` material icon|`false`|`any`|
 |**`buttonDeleteText`**|Text of the of the button used to delete a previous entry on the PIN panel|`delete`|`false`|`string`|
 |**`buttonNumberComponent`**|Button component to be used on the PIN panel to select a character for the PIN|TouchableHighlight button with a number text|`false`|`any`|
 |**`callbackErrorTouchId`**|Callback to be used when the TouchID authenticate method throws an error|`console.log('TouchID error', e)`|`false`|`(error: Error) => void`|
-|**`customBackSpaceIcon`**|Icon to be used to replace the default backspace one on the PIN screen|`Material back icon`|`false`|`any`|
+|**`customBackSpaceIcon`**|Function, that returns custom backspace component to be used to replace the default backspace one on the PIN screen|`Function`|
 |**`disableLockScreen`**|Boolean to disable the lock screen|`false`|`false`|`boolean`|
 |**`endProcessFunction`**|Function to handle the end of the process|`None`|`false`|`(pinCode: string) => void`|
 |**`finishProcess`**|Function to be used when the user enters the right PIN code|Removes the values in AsyncStorage and set the status to `success`|`false`|`(pinCode?: string) => void`|
@@ -112,6 +113,7 @@ await resetPinCodeInternalStates()
 |**`handleResultEnterPin`**|Function to be used to handle the PIN code entered by the user. To be used with the **`pinStatus`** props|Functions that checks the validity of the give PIN code, stores the number of failed attempts in the `AsyncStorage` and the time the application was locked if needed|`false`|`any`|
 |**`iconComponentLockedPage`**|View component to be used between the timer and the text on the locked application page|A circular red View using the `lock` material icon|`false`|`any`|
 |**`iconButtonDeleteDisabled`**|Boolean to remove the icon on the delete button of the PIN panel|`false`|`false`|`boolean`|
+|**`launchTouchID`**|Function to manually trigger the touchID|`undefined`|`false`|`() => void`|
 |**`lockedIconComponent`**|Component to replace the locked icon on the locked application page|`Material lock icon`|`false`|`any`|
 |**`lockedPage`**|View component used as a locked page if the user fails to provide the correct PIN code `maxAttempts` times|A application locked page with a timer indicating to the user the remaining time locked and a button closing the application|`false`|`any`|
 |**`maxAttempts`**|Number of attempts the user is given before locking the application|`3`|`false`|`number`|
@@ -153,6 +155,8 @@ await resetPinCodeInternalStates()
 |**`touchIDSentence`**|String to be used in the TouchID/FaceID popup|`To unlock your application`|`false`|`string`|
 |**`touchIDTitle`**|ANDROID ONLY. String to be used in the TouchID/FaceID popup title.|`Authentication Required`|`false`|`string`|
 |**`validationRegex`**|Regex to be used to validate the PIN code entered by the user on `choose` mode|*None*|`false`|`RegExp`|
+|**`vibrationEnabled`**|Boolean enabling vibration feedback when an incorrect PIN is entered|`true`|`false`|`boolean`
+|**`delayBetweenAttempts`**|Delay when an incorrect PIN is entered|`3000`|`false`|`number`
 
 ## Styles
 
@@ -163,6 +167,7 @@ await resetPinCodeInternalStates()
 |**`colorPasswordEmpty`**|Color of the dots used for the password component when small|`turquoise`|`string`|
 |**`colorPasswordError`**|Color of the dots used for the password component on error state|`#9DAFC8`|`string`|
 |**`numbersButtonOverlayColor`**|Color of the PIN panel buttons when `highlighted`|`turquoise`|`string`|
+|**`styleAlphabet`**|Text of English letters on PIN panel. (First, set `alphabetCharsVisible={true}`)|`fontSize: grid.unit/2, fontWeight: "300"`|`StyleProp<TextStyle>`|
 |**`styleMainContainer`**|Main container of index file|`flex: 1, justifyContent: 'center', alignItems: 'center'`|`StyleProp<ViewStyle>`|
 |**`stylePinCodeChooseContainer`**|Main container of PinCodeChoose file|`flex: 1, justifyContent: 'center', alignItems: 'center'`|`StyleProp<ViewStyle>`|
 |**`stylePinCodeEnterContainer`**|Main container of PinCodeEnter file|`flex: 1, justifyContent: 'center', alignItems: 'center'`|`StyleProp<ViewStyle>`|
